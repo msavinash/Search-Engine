@@ -12,7 +12,7 @@ file = "../TelevisionNews/BBCNEWS.201701.csv"
 
 def preProcess(data):
 	tokenizer = RegexpTokenizer("\\w+")
-	tokens = tokenizer.tokenize(sample)
+	tokens = tokenizer.tokenize(data)
 	tokens = list(map(str.lower, tokens))
 	# print(tokens, len(tokens))
 
@@ -27,10 +27,11 @@ def preProcess(data):
 
 
 
-with open(file, "r") as f:
-	csvReader = csv.reader(f)
-	data = list(csvReader)
+if __name__=="__main__":
+	with open(file, "r") as f:
+		csvReader = csv.reader(f)
+		data = list(csvReader)
 
-sample = " ".join(data[1])
-tokens = preProcess(sample)
-print(tokens)
+	sample = " ".join(data[1])
+	tokens = preProcess(sample)
+	print(tokens)
