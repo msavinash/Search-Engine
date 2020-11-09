@@ -3,7 +3,7 @@ import os
 from preProcessor import preProcess
 
 FOLDER = "..\\TelevisionNews"
-NEW_FOLDER = "TelevisionNews1"
+NEW_FOLDER = "TelevisionNews2"
 
 
 LOGFILE = "log.txt"
@@ -19,7 +19,7 @@ def getFilesRecursive(folder):
 
 
 def storeData(data, path, number):
-	path = path.replace("TelevisionNews", "TelevisionNews1")
+	path = path.replace("TelevisionNews", NEW_FOLDER)
 	# print(path)
 	try:
 		os.makedirs(path)
@@ -27,7 +27,7 @@ def storeData(data, path, number):
 		pass
 	fileName = str(number) + ".txt"
 	with open(os.path.join(path, fileName), "w") as f:
-		f.write("\n".join(data))
+		f.write(" ".join(data))
 
 files = getFilesRecursive(FOLDER)
 
@@ -44,6 +44,7 @@ for file in files:
 			print("Skipping", file)
 			skippedCount += 1
 			skippedFiles.append(file)
+			continue
 	for rowNum in range(1, len(rows)):
 		row = " ".join(rows[rowNum])
 		tokens = preProcess(row)

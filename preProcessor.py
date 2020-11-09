@@ -18,11 +18,10 @@ def preProcess(data):
 
 	stopwrds = stopwords.words("english")
 	tokens_stopwrd_removed = list(filter(lambda x:x not in stopwrds, tokens))
-	tokens_stopwrd_removed_set = list(set(tokens_stopwrd_removed))
 	lem = WordNetLemmatizer()
-	for i in range(len(tokens_stopwrd_removed_set)):
-		tokens_stopwrd_removed_set[i] = lem.lemmatize(tokens_stopwrd_removed_set[i])
-	return tokens_stopwrd_removed_set
+	for i in range(len(tokens_stopwrd_removed)):
+		tokens_stopwrd_removed[i] = lem.lemmatize(tokens_stopwrd_removed[i])
+	return tokens_stopwrd_removed
 
 
 
